@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 import { BsFillPlayFill } from "react-icons/bs";
+import FavoriteButton from "./FavoriteButton";
 
 type Props = {
   data: Record<string, any>;
@@ -32,18 +33,17 @@ const MovieCard: React.FC<Props> = ({ data }) => {
               onClick={() => {}}>
               <BsFillPlayFill size={30} />
             </div>
-            <p className="text-green-400 font-semibold mt-4">
-              New <span className="text-white">2023</span>
-            </p>
+            <FavoriteButton movieId={data?.id} />
+          </div>
+          <p className="text-green-400 font-semibold mt-4">
+            New <span className="text-white">2023</span>
+          </p>
 
-            <div className="flex flex-row mt-4 gap-2 items-center">
-              <p className="text-white text-[10px] lg:text-sm">
-                {data.duration}
-              </p>
-            </div>
-            <div className="flex flex-row mt-4 gap-2 items-center">
-              <p className="text-white text-[10px] lg:text-sm">{data.genre}</p>
-            </div>
+          <div className="flex flex-row mt-4 gap-2 items-center">
+            <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
+          </div>
+          <div className="flex flex-row mt-4 gap-2 items-center">
+            <p className="text-white text-[10px] lg:text-sm">{data.genre}</p>
           </div>
         </div>
       </div>
