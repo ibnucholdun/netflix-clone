@@ -9,6 +9,23 @@ import { FaGithub } from "react-icons/fa";
 import { NextPageContext } from "next";
 import { useRouter } from "next/router";
 
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
+
 const AuthPage = () => {
   const router = useRouter();
 
@@ -131,20 +148,3 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
-
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
-
-  if (session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-}
